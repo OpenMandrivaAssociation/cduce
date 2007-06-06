@@ -1,5 +1,5 @@
 %define name	cduce
-%define version	0.4.1
+%define version	0.4.2
 %define release	%mkrel 1
 %define ocaml_sitelib %(if [ -x /usr/bin/ocamlc ]; then ocamlc -where;fi)/site-lib
 
@@ -7,8 +7,8 @@ Name:		%{name}
 Version:	%{version}
 Release:	%{release}
 Summary:	XML-oriented functional language
-Source: 	http://www.cduce.org/download/%{name}-%{version}.tar.bz2
-patch:      %{name}-0.4.1-destdir.patch
+Source0:	http://www.cduce.org/download/%{name}-%{version}.tar.gz
+Patch0:		%{name}-0.4.1-destdir.patch
 URL:		http://www.cduce.org
 License:	GPL
 Group:		Development/Other
@@ -19,7 +19,7 @@ BuildRequires:	ocaml-ulex-devel
 BuildRequires:	ocaml-ocamlnet-devel
 BuildRequires:	ocaml-pxp-devel >= 1.1.96
 BuildRequires:	findlib
-BuildRoot:	%{_tmppath}/%{name}-%{version}
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 CDuce is a modern XML-oriented functional language with innovative features. A
@@ -29,7 +29,7 @@ documents.
 
 %prep
 %setup -q
-%patch -p 1
+%patch0 -p1 -b .destdir
 
 %build
 ./configure --prefix=%{_prefix} --mandir=%{_mandir} --docdir=%{_docdir}/%{name}-%{version}
@@ -37,8 +37,8 @@ documents.
 
 %install
 rm -rf %{buildroot}
-install -d -m 755 %{buildroot}/%{ocaml_sitelib}
-install -d -m 755 %{buildroot}/%{ocaml_sitelib}/stublibs
+install -d -m755 %{buildroot}/%{ocaml_sitelib}
+install -d -m755 %{buildroot}/%{ocaml_sitelib}/stublibs
 make install OCAMLFIND_INSTFLAGS="-destdir %{buildroot}/%{ocaml_sitelib}" DESTDIR="%{buildroot}"
 rm -f %{buildroot}/%{ocaml_sitelib}/stublibs/*.so.owner
 
@@ -51,5 +51,3 @@ rm -rf %{buildroot}
 %{_bindir}/*
 %{_mandir}/man1/*
 %{ocaml_sitelib}/cduce
-
-
