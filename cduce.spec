@@ -1,5 +1,5 @@
 %define name	cduce
-%define version	0.4.2
+%define version	0.5.0
 %define release	%mkrel 1
 %define ocaml_sitelib %(if [ -x /usr/bin/ocamlc ]; then ocamlc -where;fi)/site-lib
 
@@ -33,7 +33,7 @@ documents.
 
 %build
 ./configure --prefix=%{_prefix} --mandir=%{_mandir} --docdir=%{_docdir}/%{name}-%{version}
-%make
+make
 
 %install
 rm -rf %{buildroot}
