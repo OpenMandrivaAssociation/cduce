@@ -1,7 +1,6 @@
 %define name	cduce
 %define version	0.5.0
-%define release	%mkrel 1
-%define ocaml_sitelib %(if [ -x /usr/bin/ocamlc ]; then ocamlc -where;fi)/site-lib
+%define release	%mkrel 2
 
 Name:		%{name}
 Version:	%{version}
@@ -13,13 +12,15 @@ URL:		http://www.cduce.org
 License:	GPL
 Group:		Development/Other
 BuildRequires:	ocaml
+BuildRequires:	ocaml-sources
 BuildRequires:	camlp4
+BuildRequires:	ocaml-expat
 BuildRequires:	ocaml-pcre-devel
 BuildRequires:	ocaml-ulex-devel
 BuildRequires:	ocaml-ocamlnet-devel
 BuildRequires:	ocaml-pxp-devel >= 1.1.96
 BuildRequires:	findlib
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
+BuildRoot:	    %{_tmppath}/%{name}-%{version}
 
 %description
 CDuce is a modern XML-oriented functional language with innovative features. A
@@ -32,7 +33,11 @@ documents.
 %patch0 -p1 -b .destdir
 
 %build
-./configure --prefix=%{_prefix} --mandir=%{_mandir} --docdir=%{_docdir}/%{name}-%{version}
+./configure \
+    --prefix=%{_prefix} \
+    --mandir=%{_mandir} \
+    --docdir=%{_docdir}/%{name}-%{version} \
+    --mliface=%{_prefix}/src/ocaml
 make
 
 %install
