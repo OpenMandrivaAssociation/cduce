@@ -14,7 +14,7 @@ Group:		Development/Other
 BuildRequires:	ocaml
 BuildRequires:	ocaml-sources
 BuildRequires:	camlp4
-BuildRequires:	ocaml-expat
+BuildRequires:	ocaml-expat-devel
 BuildRequires:	ocaml-pcre-devel
 BuildRequires:	ocaml-ulex-devel
 BuildRequires:	ocaml-ocamlnet-devel
