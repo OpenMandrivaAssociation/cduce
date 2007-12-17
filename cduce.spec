@@ -20,7 +20,6 @@ BuildRequires:	ocaml-ulex-devel
 BuildRequires:	ocaml-ocamlnet-devel
 BuildRequires:	ocaml-pxp-devel >= 1.1.96
 BuildRequires:	findlib
-BuildRoot:	    %{_tmppath}/%{name}-%{version}
 
 %description
 CDuce is a modern XML-oriented functional language with innovative features. A
