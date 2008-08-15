@@ -1,6 +1,8 @@
 %define name	cduce
-%define version	0.5.0
-%define release	%mkrel 5
+%define major	0.5.2
+%define minor   1
+%define version %{major}.%{minor}
+%define release	%mkrel 1
 
 Name:		%{name}
 Version:	%{version}
@@ -29,7 +31,7 @@ type-safe, efficient, and offer powerful constructions to work with XML
 documents.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{major}
 %patch0 -p1 -b .destdir
 
 %build
