@@ -2,14 +2,14 @@
 %define major	0.5.2
 %define minor   1
 %define version %{major}.%{minor}
-%define release	%mkrel 1
+%define release	%mkrel 2
 
 Name:		%{name}
 Version:	%{version}
 Release:	%{release}
 Summary:	XML-oriented functional language
-Source0:	http://www.cduce.org/download/%{name}-%{version}.tar.gz
-Patch0:		%{name}-0.4.1-destdir.patch
+Source:	    http://www.cduce.org/download/%{name}-%{version}.tar.gz
+Patch:		cduce-0.5.2.1-ocaml-3.11.0.patch
 URL:		http://www.cduce.org
 License:	GPL
 Group:		Development/Other
@@ -20,8 +20,9 @@ BuildRequires:	ocaml-expat-devel
 BuildRequires:	ocaml-pcre-devel
 BuildRequires:	ocaml-ulex-devel
 BuildRequires:	ocaml-ocamlnet-devel
+BuildRequires:	ocaml-curl-devel
 BuildRequires:	ocaml-pxp-devel >= 1.1.96
-BuildRequires:	findlib
+BuildRequires:	ocaml-findlib
 BuildRoot:	    %{_tmppath}/%{name}-%{version}
 
 %description
@@ -30,31 +31,49 @@ compiler is available under the terms of an open-source license. CDuce is
 type-safe, efficient, and offer powerful constructions to work with XML
 documents.
 
+%package        devel
+Summary:        Development files for %{name}
+Group:          Development/Other
+Requires:       %{name} = %{version}-%{release}
+
+%description    devel
+The %{name}-devel package contains libraries and signature files for
+developing applications that use %{name}.
+
 %prep
 %setup -q -n %{name}-%{major}
-%patch0 -p1 -b .destdir
+%patch -p1
 
 %build
 ./configure \
     --prefix=%{_prefix} \
     --mandir=%{_mandir} \
-    --docdir=%{_docdir}/%{name}-%{version} \
+    --docdir=%{_docdir}/%{name} \
     --mliface=%{_prefix}/src/ocaml
-make
+make all doc
 
 %install
 rm -rf %{buildroot}
-install -d -m755 %{buildroot}/%{ocaml_sitelib}
-install -d -m755 %{buildroot}/%{ocaml_sitelib}/stublibs
-make install OCAMLFIND_INSTFLAGS="-destdir %{buildroot}/%{ocaml_sitelib}" DESTDIR="%{buildroot}"
-rm -f %{buildroot}/%{ocaml_sitelib}/stublibs/*.so.owner
+install -d -m 755 %{buildroot}/%{_libdir}/ocaml
+make install \
+    OCAMLFIND_DESTDIR=%{buildroot}/%{_libdir}/ocaml \
+    BINDIR=%{buildroot}%{_bindir} \
+    MANDIR=%{buildroot}%{_mandir} \
+    DOCDIR=%{buildroot}%{_docdir}/%{name} \
 
 %clean
 rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
-%doc %{_docdir}/%{name}-%{version}
+%doc %{_docdir}/%{name}
 %{_bindir}/*
 %{_mandir}/man1/*
-%{ocaml_sitelib}/cduce
+%{_libdir}/ocaml/cduce
+%exclude %{_libdir}/ocaml/cduce/*.a
+%exclude %{_libdir}/ocaml/cduce/*.cmxa
+
+%files devel
+%defattr(-,root,root,-)
+%{_libdir}/ocaml/cduce/*.a
+%{_libdir}/ocaml/cduce/*.cmxa
