@@ -1,15 +1,12 @@
 %define name	cduce
-%define major	0.5.2
-%define minor   1
-%define version %{major}.%{minor}
-%define release	%mkrel 2
+%define version 0.5.3
+%define release	%mkrel 1
 
 Name:		%{name}
 Version:	%{version}
 Release:	%{release}
 Summary:	XML-oriented functional language
 Source:	    http://www.cduce.org/download/%{name}-%{version}.tar.gz
-Patch:		cduce-0.5.2.1-ocaml-3.11.0.patch
 URL:		http://www.cduce.org
 License:	GPL
 Group:		Development/Other
@@ -41,8 +38,7 @@ The %{name}-devel package contains libraries and signature files for
 developing applications that use %{name}.
 
 %prep
-%setup -q -n %{name}-%{major}
-%patch -p1
+%setup -q
 
 %build
 ./configure \
