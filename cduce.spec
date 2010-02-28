@@ -46,7 +46,7 @@ developing applications that use %{name}.
     --mandir=%{_mandir} \
     --docdir=%{_docdir}/%{name} \
     --mliface=%{_prefix}/src/ocaml
-make all doc
+make all doc VERBOSE=true
 
 %install
 rm -rf %{buildroot}
