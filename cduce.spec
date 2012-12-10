@@ -1,6 +1,6 @@
 %define name	cduce
 %define version 0.5.3
-%define release	%mkrel 4
+%define release	%mkrel 3
 
 Name:		%{name}
 Version:	%{version}
@@ -73,3 +73,65 @@ rm -rf %{buildroot}
 %defattr(-,root,root,-)
 %{_libdir}/ocaml/cduce/*.a
 %{_libdir}/ocaml/cduce/*.cmxa
+
+
+%changelog
+* Sun Feb 28 2010 Guillaume Rousse <guillomovitch@mandriva.org> 0.5.3-3mdv2010.1
++ Revision: 512708
+- rebuild
+
+* Mon Jun 29 2009 Guillaume Rousse <guillomovitch@mandriva.org> 0.5.3-2mdv2010.0
++ Revision: 390543
+- rebuild for latest ocaml
+
+* Mon Jun 08 2009 Guillaume Rousse <guillomovitch@mandriva.org> 0.5.3-1mdv2010.0
++ Revision: 384005
+- new version
+- drop patch, merged upstream
+
+* Mon Dec 29 2008 Guillaume Rousse <guillomovitch@mandriva.org> 0.5.2.1-2mdv2009.1
++ Revision: 321204
+- move non-devel files in main package
+- site-lib hierarchy doesn't exist anymore
+- fix build with latest ocaml (fedora patch)
+- add curl support
+
+* Fri Aug 15 2008 Guillaume Rousse <guillomovitch@mandriva.org> 0.5.2.1-1mdv2009.0
++ Revision: 272368
+- new version
+
+* Wed Jul 23 2008 Thierry Vignaud <tv@mandriva.org> 0.5.0-5mdv2009.0
++ Revision: 243470
+- rebuild
+
+* Fri Mar 07 2008 Guillaume Rousse <guillomovitch@mandriva.org> 0.5.0-3mdv2008.1
++ Revision: 181374
+- rebuild
+
+  + Olivier Blin <oblin@mandriva.com>
+    - restore BuildRoot
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - kill re-definition of %%buildroot on Pixel's request
+
+* Thu Sep 06 2007 Guillaume Rousse <guillomovitch@mandriva.org> 0.5.0-2mdv2008.0
++ Revision: 80935
+- fix build dependencies
+- build ocaml interface
+  expat support
+
+* Sat Aug 18 2007 Guillaume Rousse <guillomovitch@mandriva.org> 0.5.0-1mdv2008.0
++ Revision: 65397
+- new version
+
+  + Per Øyvind Karlsen <peroyvind@mandriva.org>
+    - new release: 0.4.2
+
+
+* Fri Feb 23 2007 Guillaume Rousse <guillomovitch@mandriva.org> 0.4.1-1mdv2007.0
++ Revision: 124865
+- fix build dependencies
+
+* Fri Feb 23 2007 Guillaume Rousse <guillomovitch@mandriva.org> 0.4.1-1mdv2007.1
+- first mdv release
+
