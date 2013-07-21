@@ -1,2 +1,4 @@
+removed_sources:
+  cduce-0.5.3.tar.gz: e59335983583675e06df60bcfb39b3b8b5388f06
 sources:
-  "cduce-0.5.3.tar.gz": e59335983583675e06df60bcfb39b3b8b5388f06
+  cduce-0.5.5.tar.gz: 2305d876f21c320edb62f9116a395e32480c3df1

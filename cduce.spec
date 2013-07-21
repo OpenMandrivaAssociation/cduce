@@ -3,8 +3,8 @@
 %define release	%mkrel 3
 
 Name:		%{name}
-Version:	%{version}
-Release:	%{release}
+Version:	0.5.5
+Release:	1
 Summary:	XML-oriented functional language
 Source:	    http://www.cduce.org/download/%{name}-%{version}.tar.gz
 URL:		http://www.cduce.org
@@ -134,4 +134,5 @@ rm -rf %{buildroot}
 
 * Fri Feb 23 2007 Guillaume Rousse <guillomovitch@mandriva.org> 0.4.1-1mdv2007.1
 - first mdv release
+
 
