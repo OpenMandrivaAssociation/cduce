@@ -1,10 +1,10 @@
 %define name	cduce
 %define version 0.5.3
-%define release	%mkrel 3
+%define release	4
 
 Name:		%{name}
 Version:	0.5.5
-Release:	1
+Release:	2
 Summary:	XML-oriented functional language
 Source:	    http://www.cduce.org/download/%{name}-%{version}.tar.gz
 URL:		http://www.cduce.org
