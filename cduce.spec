@@ -10,6 +10,11 @@ Source:	    http://www.cduce.org/download/%{name}-%{version}.tar.gz
 URL:		https://www.cduce.org
 License:	GPL
 Group:		Development/Other
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	ocaml
 BuildRequires:	ocaml-sources
 BuildRequires:	camlp4
